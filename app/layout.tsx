@@ -3,10 +3,10 @@ import { Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import localFont from "next/font/local";
 import { ViewTransitions } from "next-view-transitions";
-import PageTransition from "@/components/common/page-transition";
-import Headers from "@/components/view/home/headers";
+import Headers from "@/components/common/header";
 import { siteConfig } from "@/lib/utils";
-import ProtectedWrapper from "@/components/common/protected-wrapper";
+import PageWrapper from "@/components/common/page-wrapper";
+import { BackgroundProvider } from "@/contexts/background-context";
 
 const satoshi = localFont({
   src: [
@@ -66,7 +66,14 @@ export const metadata: Metadata = {
   },
   metadataBase: new URL(siteConfig.url),
   description: siteConfig.description,
-  keywords: ["ai company", "evlogia ai", "evlogia labs", "evlogia"],
+  keywords: [
+    "ai company",
+    "contextlabs",
+    "context labs",
+    "ai interfaces",
+    "intelligent solutions",
+    "workflow automation",
+  ],
   authors: [
     {
       name: "naymur rahman",
@@ -105,7 +112,6 @@ export const metadata: Metadata = {
   manifest: `${siteConfig.url}/site.webmanifest`,
 };
 
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -114,13 +120,15 @@ export default function RootLayout({
   return (
     <ViewTransitions>
       <html lang="en">
-        
         <body className={`${satoshi.className}`}>
-        {/* <ProtectedWrapper> */}
-          <Headers />
-          <PageTransition />
-          {children}
-        {/* </ProtectedWrapper> */}
+          <BackgroundProvider>
+            <PageWrapper>
+              <Headers />
+              <main className="w-full h-screen sm:h-svh min-h-screen">
+                {children}
+              </main>
+            </PageWrapper>
+          </BackgroundProvider>
         </body>
       </html>
     </ViewTransitions>

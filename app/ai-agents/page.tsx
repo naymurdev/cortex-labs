@@ -3,17 +3,13 @@ import { Metadata } from "next";
 import React from "react";
 
 export const metadata: Metadata = {
-  title: "AI Agents | Evlogia Labs Pvt Ltd",
+  title: "AI Agents",
   description:
-    "We are an AI-driven company creating intelligent solutions to empower businesses and individuals, from predictive analytics to automation.",
+    "Explore ContextLabs' AI agents and intelligent automation solutions. Discover how our AI technology can transform your business processes.",
 };
 
 function page() {
-  return (
-    <main className="font-satoshi">
-      <AiAgents />
-    </main>
-  );
+  return <AiAgents />;
 }
 
 export default page;

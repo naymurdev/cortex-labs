@@ -89,10 +89,9 @@ const CustomCursor = () => {
 
   return (
     <>
-      {/* Outer cursor (trail) */}
       <motion.div
         ref={cursorRef}
-        className="fixed pointer-events-none mix-blend-difference z-50 rounded-full border border-blue-600"
+        className="fixed pointer-events-none mix-blend-difference z-999 rounded-full border border-white"
         style={{
           x: cursorX,
           y: cursorY,
@@ -107,7 +106,7 @@ const CustomCursor = () => {
 
       {/* Inner cursor (dot) */}
       <motion.div
-        className="fixed pointer-events-none mix-blend-difference z-50 rounded-full bg-white w-4 h-4"
+        className="fixed pointer-events-none mix-blend-difference z-999 rounded-full bg-white w-4 h-4"
         style={{
           x: mouseX,
           y: mouseY,

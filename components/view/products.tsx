@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
-import GridDistortion from "@/components/common/grid-distortion";
+import GridDistortion from "@/components/ui/grid-distortion";
 import { motion, stagger, useAnimate } from "motion/react";
 import { CornerUpLeft, MoveRight, MoveUpRight } from "lucide-react";
 import Link from "next/link";
@@ -9,22 +9,19 @@ import { TeamImage } from "@/assets/team";
 import VariableFontCursorProximity from "../ui/text-font-cursor-proximity";
 import { cn } from "@/lib/utils";
 import MagneticButton from "../ui/megnet-button";
-import MeshGradient from "../common/mesh-gradient";
-import HorizontalFlowBars from "../common/horizontal-flow-bar";
+import MeshGradient from "../ui/mesh-gradient";
+import HorizontalFlowBars from "../ui/horizontal-flow-bar";
 
 function Products() {
   const [scope, animate] = useAnimate();
 
   return (
     <>
-      {/* <MeshGradient/> */}
-      <HorizontalFlowBars />
-
       <section
         className="sm:w-[80%] w-[92%] h-full rounded-md  mx-auto   "
         ref={scope}
       >
-        <div className="h-full min-h-screen w-full xl:flex xl:flex-col xl:pt-0 pt-32 xl:pb-0 pb-8 items-start justify-center  text-white space-y-5">
+        <div className="h-full min-h-screen w-full xl:flex xl:flex-col xl:pt-0 pt-32 xl:pb-0 pb-8 items-start justify-center text-white space-y-5">
           <div className="space-y-4">
             <MagneticButton href="/" />
 
@@ -42,7 +39,7 @@ function Products() {
               transition={{ duration: 1, delay: 0.8 }}
               className="max-w-(--breakpoint-lg) xl:text-3xl md:text-2xl text-lg relative z-2"
             >
-              We build AI-driven products—some for solving industry problems,
+              We build AI-driven products some for solving industry problems,
               others just for fun.
             </motion.p>
           </div>
@@ -50,57 +47,55 @@ function Products() {
             <a
               href="https://certifi.evlogia.ai"
               target="_blank"
-              className="bg-neutral-950 relative z-2  p-4 rounded-lg hover:border-[#7530d0] border-4 border-neutral-900"
+              className="bg-white/20 backdrop-blur-xl relative z-2  p-4 rounded-lg"
             >
               {/* <MoveRight className="absolute right-4 top-4" /> */}
               <MoveUpRight className="absolute right-4 top-4" />
-              <h1 className="text-2xl uppercase pb-2 font-medium">Certifi</h1>
+              <h1 className="text-2xl uppercase pb-2 font-medium">
+                NeuralFlow
+              </h1>
               <p className="text-xl">
-                AI-powered digital credentialing for easy certification
-                verification.
+                AI-powered workflow automation for seamless business processes.
               </p>
             </a>
-            <div
-              className="bg-neutral-950 relative z-2  p-4 rounded-lg hover:border-[#6a6b6b] border-4 border-neutral-900"
-            >
+            <div className="bg-white/20 backdrop-blur-xl relative z-2  p-4 rounded-lg">
               <div className="absolute top-4 right-4 flex items-center gap-2">
-              <span className="relative flex size-3">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
-                <span className="relative inline-flex size-3 rounded-full bg-green-500"></span>
-              </span>
+                <span className="relative flex size-3">
+                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
+                  <span className="relative inline-flex size-3 rounded-full bg-green-500"></span>
+                </span>
               </div>
               <h1 className="text-2xl uppercase  pb-2 font-medium">
-                Signer AI
+                QuantumSync
               </h1>
               <p className=" text-xl">
-                Smart document processing for automating contracts, forms, and
-                validation.
+                Real-time data synchronization across distributed systems.
               </p>
             </div>
             <a
               href="https://ui-layouts.com/"
               target="_blank"
-              className="bg-neutral-950 relative z-2  p-4 rounded-lg hover:border-[#304dd0] border-4 border-neutral-900"
+              className="bg-white/20 backdrop-blur-xl relative z-2  p-4 rounded-lg"
             >
               <MoveUpRight className="absolute right-4 top-4" />
               <h1 className="text-2xl uppercase  pb-2 font-medium">
-                Ui-Layouts
+                CloudVault
               </h1>
               <p className=" text-xl">
-                An Open Source Component Library for Developer
+                Secure cloud storage with advanced encryption and AI insights.
               </p>
             </a>
             <a
               href="https://tools.ui-layouts.com/"
               target="_blank"
-              className="bg-neutral-950 relative z-2  p-4 rounded-lg hover:border-[#304dd0] border-4 border-neutral-900"
+              className="bg-white/20 backdrop-blur-xl relative z-2  p-4 rounded-lg"
             >
               <MoveUpRight className="absolute right-4 top-4" />
               <h1 className="text-2xl uppercase  pb-2 font-medium">
-                Ui-Tools
+                DataPulse
               </h1>
               <p className=" text-xl">
-                An Open Source Tools for Designer and Developer
+                Analytics platform for real-time business intelligence.
               </p>
             </a>
           </div>

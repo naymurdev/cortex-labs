@@ -1,83 +1,70 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import GridDistortion from "@/components/common/grid-distortion";
-import { AnimatePresence, motion, stagger, useAnimate } from "motion/react";
+import { motion, stagger, useAnimate } from "motion/react";
 import { TeamImage } from "@/assets/team";
 import MagneticButton from "../ui/megnet-button";
 import Image from "next/image";
 import { Plus, X } from "lucide-react";
-import { cn } from "@/lib/utils";
-import MagneticCloseButton from "../ui/megnet-close-button";
-import Video from "next-video";
-import awesomeVideo from "@/videos/field.mp4";
-import VideoBg from "../common/video-bg";
-import { ScrollArea } from "../ui/scroll-area";
-import MeshGradient from "../common/mesh-gradient";
-import HorizontalFlowBars from "../common/horizontal-flow-bar";
+
 import { ProgressiveBlur } from "../ui/progressive-blur";
 import XStreamlineIcon from "../icons/x";
-import {
-  Dialog,
-  DialogClose,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
+import { Dialog, DialogContent } from "@/components/ui/dialog";
 import ProfileCardIcon from "../icons/linkedin";
 import GlobeIcon from "../icons/globe";
 
 const teamPeople = [
   {
-    memberName: "Ethan Kiran D’souza",
+    memberName: "Alexander Chen",
     id: 2,
-    memeberHoverImg: TeamImage.team2,
-    memberImage: TeamImage.EthanSprite,
+    memberImage: "/team1.png",
+    linkedinHref: "https://www.linkedin.com/in/naymur-rahman-ripon/",
+    xHref: "https://x.com/naymur_dev",
+    websiteHref: "https://naymur.com/",
     role: "Strategy Guy (Founder)",
     description: [
-      "Ethan is a natural leader—wise beyond his years and always getting things done right while making an impact on his community. He’s built strong connections through hard work and dedication.",
-      "But, whatever you do, don’t let him drive. Ethan’s idea of road safety is “Did I hit the brake or the gas?” Also, he’s still unsure if it’s time to sleep or time to wake up. He might just stay awake all night, then wonder why he’s late for everything the next day!",
+      "Alexander is a natural leader—wise beyond his years and always getting things done right while making an impact on his community. He's built strong connections through hard work and dedication.",
+      "But, whatever you do, don't let him drive. Alexander's idea of road safety is 'Did I hit the brake or the gas?' Also, he's still unsure if it's time to sleep or time to wake up. He might just stay awake all night, then wonder why he's late for everything the next day!",
     ],
   },
   {
-    memberName: "Naymur Rahman Ripon",
+    memberName: "Marcus Williams",
     id: 1,
-    memeberHoverImg: TeamImage.team3,
-    memberImage: TeamImage.NaymurSprite,
+    memberImage: "/team2.png",
     role: "Web Guy (Co-Founder)",
-
-    // description:
-    //   "The creative genius behind all things visual. Naymur turns vague concepts into stunning designs while juggling endless revisions. Even when the vision keeps changing, he finds a way to bring it to life with precision and style.",
+    linkedinHref: "https://www.linkedin.com/in/naymur-rahman-ripon/",
+    xHref: "https://x.com/naymur_dev",
+    websiteHref: "https://naymur.com/",
     description: [
-      "Naymur is a frontend developer, UI designer, and animator.",
+      "Marcus is a frontend developer, UI designer, and animator.",
       "He responds to messages faster than we can type them.",
-      "His designs? They're... Amazing. His ability to show up on time for meetings? He's still working on that feature. We think.",
+      "His designs? They're... Amazing. His ability to show up on time for meetings? He's still working on that feature. We think.",
     ],
   },
   {
-    memberName: "Vaibhav K Salian",
+    memberName: "David Kumar",
     id: 3,
-    memeberHoverImg: TeamImage.team1,
-    memberImage: TeamImage.vaibhavSprite,
+    linkedinHref: "https://www.linkedin.com/in/naymur-rahman-ripon/",
+    xHref: "https://x.com/naymur_dev",
+    websiteHref: "https://naymur.com/",
+    memberImage: "/team3.png",
     role: "AI Guy (Co-Founder)",
-
     description: [
-      "Vaibhav is a genius when it comes to AI and development—solving complex problems like it’s second nature. Backend? Machine learning? Scalable solutions? He’s got it all covered effortlessly.",
-      "But when it comes to UI/UX, that’s a different story. His design choices are… questionable at best. Color theory is just an abstract concept to him, and user experience? Let’s just say users experience something, but we’re not sure it’s good.",
-      "Thankfully, his code speaks for itself—because his designs definitely should’t.",
+      "David is a genius when it comes to AI and development—solving complex problems like it's second nature. Backend? Machine learning? Scalable solutions? He's got it all covered effortlessly.",
+      "But when it comes to UI/UX, that's a different story. His design choices are… questionable at best. Color theory is just an abstract concept to him, and user experience? Let's just say users experience something, but we're not sure it's good.",
+      "Thankfully, his code speaks for itself—because his designs definitely shouldn't.",
     ],
   },
   {
-    memberName: "Joshua Jacob",
+    memberName: "Robert Thompson",
     id: 4,
-    memeberHoverImg: TeamImage.team4,
-    memberImage: TeamImage.joshua,
+    memberImage: "/team4.png",
+    linkedinHref: "https://www.linkedin.com/in/naymur-rahman-ripon/",
+    xHref: "https://x.com/naymur_dev",
+    websiteHref: "https://naymur.com/",
     role: "Consultant (Co-Founder)",
     description: [
-      "JJ is the kind of developer who doesn’t say much—but when he does, it’s probably a genius solution to a problem no one else even saw coming. A master of app development, he makes things work smoothly while the rest of us just nod and pretend to understand how he does it.",
-      "He’s reliable, skilled, and efficient… almost too efficient. We’re starting to think he might actually be an AI in disguise—never causing trouble, always delivering quality work… yet somehow still debugging his own ability to talk to a girl.",
+      "Robert is the kind of developer who doesn't say much—but when he does, it's probably a genius solution to a problem no one else even saw coming. A master of app development, he makes things work smoothly while the rest of us just nod and pretend to understand how he does it.",
+      "He's reliable, skilled, and efficient… almost too efficient. We're starting to think he might actually be an AI in disguise—never causing trouble, always delivering quality work… yet somehow still debugging his own ability to talk to a girl.",
     ],
   },
 ];
@@ -108,27 +95,23 @@ function People() {
   }, [open]);
   return (
     <>
-      {/* <VideoBg /> */}
-      {/* <MeshGradient/> */}
-      <HorizontalFlowBars />
-
       <section
-        className="sm:w-[80%] w-[92%] h-full rounded-md  mx-auto pb-5  "
+        className="sm:w-[80%] w-[92%] h-full rounded-md mx-auto py-5"
         ref={scope}
       >
-        <div className="h-full min-h-screen w-full 2xl:flex 2xl:flex-col 2xl:pt-0 pt-32 xl:pb-0 pb-8  items-start justify-center  text-white">
+        <div className="h-full w-full 2xl:flex 2xl:flex-col 2xl:pt-0 pt-32 xl:pb-0 pb-8 items-start justify-center text-white">
           <MagneticButton href="/" />
 
-          <motion.div className="leading-[100%] xl:text-7xl text-6xl font-medium relative z-2 py-2.5">
+          <motion.div className="leading-[100%] 2xl:text-7xl text-6xl font-medium relative z-2 py-2.5">
             <span className="block">People</span>
           </motion.div>
-          <motion.p className="max-w-(--breakpoint-lg) xl:text-3xl sm:text-2xl  relative z-2">
+          <motion.p className="max-w-5xl 2xl:text-3xl sm:text-2xl relative z-2">
             Evlogia is led by a team of engineers and analysts focused on
             building useful AI. Our leadership and advisors bring expertise in
             AI, business, and engineering to ensure our technology is practical,
             effective, and scalable.
           </motion.p>
-          <div className="grid xl:grid-cols-4 grid-cols-2 w-full sm:gap-4 gap-2 mt-10">
+          <div className="grid xl:grid-cols-4 grid-cols-2 w-full sm:gap-4 gap-2 2xl:mt-10">
             {teamPeople.map((member, i) => (
               <motion.div
                 key={member.id}
@@ -141,14 +124,14 @@ function People() {
                 layoutId={member.memberName}
                 onMouseEnter={() => setHoveredMember(member.id)}
                 onMouseLeave={() => setHoveredMember(null)}
-                className=" group relative z-2 items-center cursor-pointer justify-center 2xl:h-[30rem] md:h-96 h-80 rounded-lg overflow-hidden"
+                className="group relative z-2 items-center cursor-pointer justify-center 2xl:h-100 md:h-96 h-80 rounded-lg space-y-2"
               >
                 <figure className="relative h-full">
                   <motion.img
                     width={500}
                     height={600}
                     alt={member.memberName}
-                    src={member.memberImage.src}
+                    src={member.memberImage}
                     className="w-full h-full object-cover rounded-lg"
                     initial={{ opacity: 1 }}
                   />
@@ -165,33 +148,35 @@ function People() {
                         {member.role}
                       </span>
                     </h1>
-                    <div className="flex gap-3 pt-5">
-                      <XStreamlineIcon hrefLink={member.memberImage.src} />
-                      <ProfileCardIcon hrefLink={member.memberImage.src}/>
-                      <GlobeIcon hrefLink={member.memberImage.src}/>
-                    </div>
                   </div>
                 </article>
+                <div className="flex justify-between gap-3 p-4 bg-neutral-950 border-t border-neutral-800">
+                  <XStreamlineIcon hrefLink={member.xHref} />
+                  <ProfileCardIcon hrefLink={member.linkedinHref} />
+                  <GlobeIcon hrefLink={member.websiteHref} />
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
 
-    
         <Dialog open={open} onOpenChange={setOpen}>
-          <DialogContent showCloseButton={false} className="sm:max-w-[625px] border border-neutral-700 text-white bg-neutral-950">
+          <DialogContent
+            showCloseButton={false}
+            className="sm:max-w-[625px] border border-neutral-700 text-white bg-neutral-950"
+          >
             <div className="grid gap-4">
               <div onClick={(e) => e.stopPropagation()}>
                 <motion.div
                   // layoutId={teamPeople[index]?.memberName}
                   className="w-full rounded-2xl space-y-2 "
                 >
-                  <article className=" relative rounded-md  bg-zinc-900 border border-zinc-800 p-4 ">
+                  <article className=" relative rounded-md bg-neutral-900 border border-neutral-800 p-4 ">
                     <motion.h1
                       initial={{ scaleY: 0.2 }}
                       animate={{ scaleY: 1 }}
                       exit={{ scaleY: 0.2 }}
-                      transition={{ duration: 0.2,   }}
+                      transition={{ duration: 0.2 }}
                       className="sm:text-4xl text-xl font-semibold"
                     >
                       {teamPeople[index]?.memberName}
@@ -200,7 +185,7 @@ function People() {
                       initial={{ scaleY: 0.2 }}
                       animate={{ scaleY: 1 }}
                       exit={{ scaleY: 0.2 }}
-                      transition={{ duration: 0.2,  }}
+                      transition={{ duration: 0.2 }}
                       className="sm:text-2xl text-xl font-medium"
                     >
                       {teamPeople[index]?.role}
@@ -213,19 +198,14 @@ function People() {
                     >
                       <X className="md:w-16 w-10 md:h-16 h-10" />
                     </button>
-                    {/* <MagneticCloseButton
-                      onClick={() => {
-                        setOpen(false);
-                      }}
-                    /> */}
                   </article>
                   <div className="sm:flex gap-4 p-4 ">
                     <Image
-                      src={teamPeople[index]?.memberImage.src}
+                      src={teamPeople[index]?.memberImage}
                       width={400}
                       height={400}
                       alt="single-image"
-                      className="rounded-2xl mx-auto shrink-0 sm:w-32 w-full h-full object-cover"
+                      className="rounded-2xl mx-auto shrink-0 sm:w-32 w-full h-full aspect-square object-contain"
                     />
                     <div className="space-y-3 sm:pt-0 pt-4">
                       {teamPeople[index]?.description?.map((des, i) => (
@@ -235,7 +215,7 @@ function People() {
                           animate={{ y: 0, opacity: 1 }}
                           exit={{ scaleY: -10, opacity: 0 }}
                           transition={{ duration: 0.2, delay: 0.2 }}
-                          className=" leading-[140%]  sm:text-lg text-sm"
+                          className="leading-[140%] sm:text-lg text-sm"
                         >
                           {des}
                         </motion.p>

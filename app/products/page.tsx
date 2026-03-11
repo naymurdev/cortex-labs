@@ -3,17 +3,13 @@ import { siteConfig } from "@/lib/utils";
 import { Metadata } from "next";
 import React from "react";
 export const metadata: Metadata = {
-  title: "Products | Evlogia Labs Pvt Ltd",
+  title: "Products",
   description:
-    "We are an AI-driven company creating intelligent solutions to empower businesses and individuals, from predictive analytics to automation.",
+    "Explore ContextLabs' innovative AI products - NeuralFlow, QuantumSync, CloudVault, DataPulse. Discover intelligent solutions for workflow automation and business analytics.",
 };
 
 function page() {
-  return (
-    <main className="font-satoshi">
-      <Products />
-    </main>
-  );
+  return <Products />;
 }
 
 export default page;

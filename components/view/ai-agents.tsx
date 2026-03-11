@@ -1,38 +1,13 @@
 "use client";
-import React, { useEffect } from "react";
-import GridDistortion from "@/components/common/grid-distortion";
-import { motion, stagger, useAnimate } from "motion/react";
-import { CornerUpLeft } from "lucide-react";
-import Link from "next/link";
-import Floating, { FloatingElement } from "../ui/parallax-floating";
-import { TeamImage } from "@/assets/team";
-import VariableFontCursorProximity from "../ui/text-font-cursor-proximity";
-import { cn } from "@/lib/utils";
+import React from "react";
+import { motion, useAnimate } from "motion/react";
 import MagneticButton from "../ui/megnet-button";
-import VideoBg from "../common/video-bg";
-import MeshGradient from "../common/mesh-gradient";
-import HorizontalFlowBars from "../common/horizontal-flow-bar";
 
 function AiAgents() {
   const [scope, animate] = useAnimate();
 
   return (
     <>
-      {/* <div className="absolute h-screen w-full top-0  z-1 left-0 [mask-image:radial-gradient(50%_60%,black,rgba(0,0,0,.3),transparent)]">
-        <GridDistortion
-          imageSrc="/liquidbg.jpg"
-          grid={10}
-          mouse={0.1}
-          strength={0.15}
-          relaxation={0.9}
-          className="h-full w-full"
-        />
-      </div> */}
-
-      {/* <VideoBg /> */}
-      {/* <MeshGradient/> */}
-      <HorizontalFlowBars/>
-
       <section
         className="sm:w-[80%] w-[92%] h-full rounded-md  mx-auto   "
         ref={scope}
@@ -62,7 +37,7 @@ function AiAgents() {
             initial={{ opacity: 0, filter: "blur(10px)" }}
             animate={{ opacity: 1, filter: "blur(0px)" }}
             transition={{ duration: 1, delay: 1 }}
-            className=" flex flex-wrap items-start relative z-2 pt-4 gap-4 text-gray-100"
+            className=" flex flex-wrap items-start relative z-2 pt-4 gap-4 text-neutral-100 backdrop-blur-xl p-4"
           >
             <div className="lg:flex-1">
               <h2 className="text-2xl font-semibold pb-2">Capabilities</h2>
@@ -86,7 +61,7 @@ function AiAgents() {
                 </li>
               </ul>
             </div>
-            <div className="lg:flex-1 ">
+            <div className="lg:flex-1">
               <h2 className="text-2xl font-semibold pb-2">
                 Use Cases & Industries
               </h2>

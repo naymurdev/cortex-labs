@@ -1,32 +1,12 @@
 "use client";
 import React from "react";
-import GridDistortion from "@/components/common/grid-distortion";
 import { motion } from "motion/react";
 import { CornerUpLeft } from "lucide-react";
 import Link from "next/link";
 import MagneticButton from "../ui/megnet-button";
-import Video from "next-video";
-import awesomeVideo from "@/videos/field.mp4";
-import VideoBg from "../common/video-bg";
-import MeshGradient from "../common/mesh-gradient";
-import HorizontalFlowBars from "../common/horizontal-flow-bar";
 function About() {
   return (
     <>
-      {/* <div className="absolute h-screen w-full top-0  z-1 left-0 [mask-image:radial-gradient(50%_60%,black,rgba(0,0,0,.3),transparent)]">
-        <GridDistortion
-          imageSrc="/liquidbg.jpg"
-          grid={10}
-          mouse={0.1}
-          strength={0.15}
-          relaxation={0.9}
-          className="h-full w-full"
-        />
-      </div> */}
-      {/* <VideoBg /> */}
-      {/* <MeshGradient/> */}
-      <HorizontalFlowBars/>
-
       <section className="sm:w-[80%] w-[92%] h-full rounded-md  mx-auto   ">
         <div className="h-full min-h-screen w-full xl:flex xl:flex-col xl:pt-0 pt-32  items-start justify-center  text-white space-y-5">
           <MagneticButton href="/" />

@@ -1,6 +1,6 @@
 // @ts-nocheck
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from "react";
 
 const NeuralNoise = () => {
   const canvasRef = useRef(null);
@@ -90,7 +90,10 @@ const NeuralNoise = () => {
     gl.compileShader(shader);
 
     if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
-      console.error("An error occurred compiling the shaders: " + gl.getShaderInfoLog(shader));
+      console.error(
+        "An error occurred compiling the shaders: " +
+          gl.getShaderInfoLog(shader),
+      );
       gl.deleteShader(shader);
       return null;
     }
@@ -98,14 +101,21 @@ const NeuralNoise = () => {
     return shader;
   };
 
-  const createShaderProgram = (gl: any, vertexShader: any, fragmentShader: any) => {
+  const createShaderProgram = (
+    gl: any,
+    vertexShader: any,
+    fragmentShader: any,
+  ) => {
     const program = gl.createProgram();
     gl.attachShader(program, vertexShader);
     gl.attachShader(program, fragmentShader);
     gl.linkProgram(program);
 
     if (!gl.getProgramParameter(program, gl.LINK_STATUS)) {
-      console.error("Unable to initialize the shader program: " + gl.getProgramInfoLog(program));
+      console.error(
+        "Unable to initialize the shader program: " +
+          gl.getProgramInfoLog(program),
+      );
       return null;
     }
 
@@ -124,7 +134,8 @@ const NeuralNoise = () => {
 
   const initShader = () => {
     const canvas = canvasRef.current;
-    const gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
+    const gl =
+      canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
 
     if (!gl) {
       alert("WebGL is not supported by your browser.");
@@ -132,12 +143,16 @@ const NeuralNoise = () => {
     }
 
     const vertexShader = createShader(gl, vertexShaderSource, gl.VERTEX_SHADER);
-    const fragmentShader = createShader(gl, fragmentShaderSource, gl.FRAGMENT_SHADER);
+    const fragmentShader = createShader(
+      gl,
+      fragmentShaderSource,
+      gl.FRAGMENT_SHADER,
+    );
 
     const shaderProgram = createShaderProgram(gl, vertexShader, fragmentShader);
     uniformsRef.current = getUniforms(gl, shaderProgram);
 
-    const vertices = new Float32Array([-1., -1., 1., -1., -1., 1., 1., 1.]);
+    const vertices = new Float32Array([-1, -1, 1, -1, -1, 1, 1, 1]);
 
     const vertexBuffer = gl.createBuffer();
     gl.bindBuffer(gl.ARRAY_BUFFER, vertexBuffer);
@@ -162,7 +177,7 @@ const NeuralNoise = () => {
     const devicePixelRatio = Math.min(window.devicePixelRatio, 2);
     canvas.width = window.innerWidth * devicePixelRatio;
     canvas.height = window.innerHeight * devicePixelRatio;
-    
+
     gl.uniform1f(uniformsRef.current.u_ratio, canvas.width / canvas.height);
     gl.viewport(0, 0, canvas.width, canvas.height);
   };
@@ -180,8 +195,15 @@ const NeuralNoise = () => {
     pointer.y += (pointer.tY - pointer.y) * 0.2;
 
     gl.uniform1f(uniforms.u_time, currentTime);
-    gl.uniform2f(uniforms.u_pointer_position, pointer.x / window.innerWidth, 1 - pointer.y / window.innerHeight);
-    gl.uniform1f(uniforms.u_scroll_progress, window.pageYOffset / (2 * window.innerHeight));
+    gl.uniform2f(
+      uniforms.u_pointer_position,
+      pointer.x / window.innerWidth,
+      1 - pointer.y / window.innerHeight,
+    );
+    gl.uniform1f(
+      uniforms.u_scroll_progress,
+      window.pageYOffset / (2 * window.innerHeight),
+    );
 
     gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
     animationRef.current = requestAnimationFrame(render);
@@ -230,25 +252,11 @@ const NeuralNoise = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-screen bg-neutral-950 overflow-hidden">
-      <canvas
-        ref={canvasRef}
-        className="fixed top-0 left-0 w-full h-full pointer-events-none opacity-95"
-        style={{ backgroundColor: '#151912' }}
-      />
-      
-      {/* Example content to demonstrate the effect */}
-      <div className="relative z-10 flex items-center justify-center h-full">
-        <div className="text-center text-white">
-          <h1 className="text-6xl font-bold mb-4 tracking-wider">
-            Neural Noise
-          </h1>
-          <p className="text-xl opacity-75 max-w-md mx-auto">
-            Move your cursor around to interact with the neural network visualization
-          </p>
-        </div>
-      </div>
-    </div>
+    <canvas
+      ref={canvasRef}
+      className="fixed top-0 left-0 w-full h-screen pointer-events-none opacity-95"
+      style={{ backgroundColor: "#151912" }}
+    />
   );
 };
 

@@ -2,16 +2,12 @@ import People from "@/components/view/people";
 import { Metadata } from "next";
 import React from "react";
 export const metadata: Metadata = {
-  title: "Creative People | Evlogia Labs Pvt Ltd",
+  title: "People",
   description:
-    "We are an AI-driven company creating intelligent solutions to empower businesses and individuals, from predictive analytics to automation.",
+    "Meet the ContextLabs team - Alexander Chen, Marcus Williams, David Kumar, Robert Thompson. Our engineers and analysts building practical AI solutions.",
 };
 function page() {
-  return (
-    <main className="font-satoshi">
-      <People />
-    </main>
-  );
+  return <People />;
 }
 
 export default page;

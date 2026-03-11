@@ -3,17 +3,13 @@ import { Metadata } from "next";
 import React from "react";
 
 export const metadata: Metadata = {
-  title: "Contact Us | Evlogia Labs Pvt Ltd",
+  title: "Contact Us",
   description:
-    "We are an AI-driven company creating intelligent solutions to empower businesses and individuals, from predictive analytics to automation.",
+    "Get in touch with ContextLabs. Schedule a 15-minute call to see if we're a good fit for your AI project. Email: naymur@ui-layouts.com",
 };
 
 function page() {
-  return (
-    <main className="font-satoshi">
-      <ContactUs />
-    </main>
-  );
+  return <ContactUs />;
 }
 
 export default page;

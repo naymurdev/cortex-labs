@@ -3,17 +3,13 @@ import About from "@/components/view/about";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-  title: "About | Evlogia Labs Pvt Ltd",
+  title: "About",
   description:
-    "We are an AI-driven company creating intelligent solutions to empower businesses and individuals, from predictive analytics to automation.",
+    "Learn about ContextLabs - our mission to build intelligent AI interfaces and solutions. Discover our approach to AI-driven digital experiences.",
 };
 
 function page() {
-  return (
-    <main className="font-satoshi">
-      <About />;
-    </main>
-  );
+  return <About />;
 }
 
 export default page;
