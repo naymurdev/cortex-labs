@@ -53,12 +53,6 @@ const satoshi = localFont({
   ],
 });
 
-// export const metadata: Metadata = {
-//   title: "Evlogia",
-//   description:
-//     "We are an AI-driven company creating intelligent solutions to empower businesses and individuals, from predictive analytics to automation.",
-// };
-
 export const metadata: Metadata = {
   title: {
     default: siteConfig.name,

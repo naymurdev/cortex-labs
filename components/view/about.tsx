@@ -1,8 +1,6 @@
 "use client";
 import React from "react";
 import { motion } from "motion/react";
-import { CornerUpLeft } from "lucide-react";
-import Link from "next/link";
 import MagneticButton from "../ui/megnet-button";
 function About() {
   return (

@@ -21,7 +21,7 @@ function Headers() {
       >
         <nav className="sm:w-[98%] w-[92%] py-2  mx-auto flex text-white items-center  justify-between rounded-md p-1 relative">
           <Link className="flex items-center space-x-2 " href="/">
-            <h1 className="text-xl font-bold">ContextLabs</h1>
+            <h1 className="text-xl font-bold">CortextLabs</h1>
           </Link>
           <div className="flex items-center gap-2">
             <CountdownTimer className="md:flex hidden" />

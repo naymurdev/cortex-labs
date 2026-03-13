@@ -7,11 +7,11 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 export const siteConfig = {
-  name: "ContextLabs",
-  url: "https://contextlabs.ui-layouts.com",
-  ogImage: "https://contextlabs.ui-layouts.com/og.jpg",
+  name: "CortextLabs",
+  url: "https://cortextlabs.ui-layouts.com",
+  ogImage: "https://cortextlabs.ui-layouts.com/og.jpg",
   description:
-    "ContextLabs - Building intelligent AI interfaces and solutions for tomorrow's digital experiences. From workflow automation to advanced analytics.",
+    "CortextLabs - Building intelligent AI interfaces and solutions for tomorrow's digital experiences. From workflow automation to advanced analytics.",
   links: {
     twitter: "https://twitter.com/naymur_dev",
     linkedin: "https://www.linkedin.com/in/naymur-rahman",

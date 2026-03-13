@@ -1,7 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { motion, stagger, useAnimate } from "motion/react";
-import { TeamImage } from "@/assets/team";
 import MagneticButton from "../ui/megnet-button";
 import Image from "next/image";
 import { Plus, X } from "lucide-react";

@@ -37,7 +37,7 @@ function AiAgents() {
             initial={{ opacity: 0, filter: "blur(10px)" }}
             animate={{ opacity: 1, filter: "blur(0px)" }}
             transition={{ duration: 1, delay: 1 }}
-            className=" flex flex-wrap items-start relative z-2 pt-4 gap-4 text-neutral-100 backdrop-blur-xl p-4"
+            className=" flex flex-wrap items-start relative z-2 pt-4 mt-2 gap-4 text-neutral-100 backdrop-blur-xl p-4"
           >
             <div className="lg:flex-1">
               <h2 className="text-2xl font-semibold pb-2">Capabilities</h2>

@@ -1,16 +1,40 @@
 "use client";
 import React, { useEffect } from "react";
-import GridDistortion from "@/components/ui/grid-distortion";
 import { motion, stagger, useAnimate } from "motion/react";
-import { CornerUpLeft, MoveRight, MoveUpRight } from "lucide-react";
-import Link from "next/link";
-import Floating, { FloatingElement } from "../ui/parallax-floating";
-import { TeamImage } from "@/assets/team";
-import VariableFontCursorProximity from "../ui/text-font-cursor-proximity";
 import { cn } from "@/lib/utils";
 import MagneticButton from "../ui/megnet-button";
-import MeshGradient from "../ui/mesh-gradient";
-import HorizontalFlowBars from "../ui/horizontal-flow-bar";
+import { LiquidGlassCard } from "../ui/liquid-glass";
+import Image from "next/image";
+
+const products = [
+  {
+    id: 1,
+    name: "NeuralFlow",
+    description:
+      "AI-powered workflow automation for seamless business processes.",
+    img: "/neuralflow.png",
+  },
+  {
+    id: 2,
+    name: "QuantumSync",
+    description: "Real-time data synchronization across distributed systems.",
+    img: "/quantumsync.png",
+    status: "active",
+  },
+  {
+    id: 3,
+    name: "DataPulse",
+    description: "Analytics platform for real-time business intelligence.",
+    img: "/datapulse.png",
+  },
+  {
+    id: 4,
+    name: "CloudVault",
+    description:
+      "Secure cloud storage with advanced encryption and AI insights.",
+    img: "/cloudvault.png",
+  },
+];
 
 function Products() {
   const [scope, animate] = useAnimate();
@@ -43,61 +67,53 @@ function Products() {
               others just for fun.
             </motion.p>
           </div>
-          <div className="grid xl:grid-cols-3 sm:grid-cols-2 gap-4 py-4 max-w-(--breakpoint-xl)">
-            <a
-              href="https://certifi.evlogia.ai"
-              target="_blank"
-              className="bg-white/20 backdrop-blur-xl relative z-2  p-4 rounded-lg"
-            >
-              {/* <MoveRight className="absolute right-4 top-4" /> */}
-              <MoveUpRight className="absolute right-4 top-4" />
-              <h1 className="text-2xl uppercase pb-2 font-medium">
-                NeuralFlow
-              </h1>
-              <p className="text-xl">
-                AI-powered workflow automation for seamless business processes.
-              </p>
-            </a>
-            <div className="bg-white/20 backdrop-blur-xl relative z-2  p-4 rounded-lg">
-              <div className="absolute top-4 right-4 flex items-center gap-2">
-                <span className="relative flex size-3">
-                  <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-green-400 opacity-75"></span>
-                  <span className="relative inline-flex size-3 rounded-full bg-green-500"></span>
-                </span>
-              </div>
-              <h1 className="text-2xl uppercase  pb-2 font-medium">
-                QuantumSync
-              </h1>
-              <p className=" text-xl">
-                Real-time data synchronization across distributed systems.
-              </p>
-            </div>
-            <a
-              href="https://ui-layouts.com/"
-              target="_blank"
-              className="bg-white/20 backdrop-blur-xl relative z-2  p-4 rounded-lg"
-            >
-              <MoveUpRight className="absolute right-4 top-4" />
-              <h1 className="text-2xl uppercase  pb-2 font-medium">
-                CloudVault
-              </h1>
-              <p className=" text-xl">
-                Secure cloud storage with advanced encryption and AI insights.
-              </p>
-            </a>
-            <a
-              href="https://tools.ui-layouts.com/"
-              target="_blank"
-              className="bg-white/20 backdrop-blur-xl relative z-2  p-4 rounded-lg"
-            >
-              <MoveUpRight className="absolute right-4 top-4" />
-              <h1 className="text-2xl uppercase  pb-2 font-medium">
-                DataPulse
-              </h1>
-              <p className=" text-xl">
-                Analytics platform for real-time business intelligence.
-              </p>
-            </a>
+          <div className="grid 2xl:grid-cols-2 sm:grid-cols-2 gap-4 py-4 max-w-6xl">
+            {products.map((product, index) => (
+              <LiquidGlassCard
+                key={product.id}
+                glowIntensity="sm"
+                shadowIntensity="sm"
+                borderRadius="12px"
+                blurIntensity="sm"
+                draggable={false}
+                className="lg:p-5 sm:p-3 p-4 wfull"
+              >
+                <motion.div
+                  initial={{ opacity: 0, filter: "blur(10px)" }}
+                  animate={{ opacity: 1, filter: "blur(0px)" }}
+                  transition={{ duration: 1, delay: 0.5 + index * 0.1 }}
+                  className="flex gap-2"
+                >
+                  <div className="shrink-0">
+                    <Image
+                      src={product.img}
+                      alt={product.name}
+                      width={100}
+                      height={100}
+                      className="lg:w-20 w-16 lg:h-20 h-16 rounded-lg"
+                    />
+                  </div>
+                  <div className="flex-1">
+                    <div className="flex items-start justify-between ">
+                      <div className="flex items-center gap-2">
+                        <h1 className="lg:text-2xl text-xl uppercase pb-2 font-semibold">
+                          {product.name}
+                        </h1>
+                      </div>
+                      {product.status === "active" && (
+                        <div className="flex items-center gap-2">
+                          <span className="relative flex size-3">
+                            <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-white opacity-75"></span>
+                            <span className="relative inline-flex size-3 rounded-full bg-white"></span>
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                    <p className="lg:text-xl">{product.description}</p>
+                  </div>
+                </motion.div>
+              </LiquidGlassCard>
+            ))}
           </div>
         </div>
       </section>
